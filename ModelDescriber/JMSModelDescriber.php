@@ -93,7 +93,7 @@ class JMSModelDescriber implements ModelDescriberInterface, ModelRegistryAwareIn
 
             $name = $this->namingStrategy->translateName($item);
             // read property options from Swagger Property annotation if it exists
-            if (null !== $item->reflection) {
+            if (!empty($item->reflection)) {
                 $property = $properties->get($annotationsReader->getPropertyName($item->reflection, $name));
                 $annotationsReader->updateProperty($item->reflection, $property, $groups);
             } else {
